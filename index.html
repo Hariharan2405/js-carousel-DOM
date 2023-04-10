@@ -1,0 +1,60 @@
+<!DocType html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="HTML, JavaScript">
+		<meta name="author" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Carousel</title>
+		<style>
+			#cont{height:500px;border:3px outset green;padding:20px;overflow:hidden;display:flex;width:80%;position:relative;}
+			img{width:100%;padding:0% 5%;}
+		</style>
+	
+	</head>
+	
+	<body>
+	<section>
+		<div id="cont">
+			<img src="image/one.jpg" width="800px" height="500px">
+			<img src="image/two.jpg" width="800px" height="500px">
+			<img src="image/three.jpg" width="800px" height="500px">
+			<img src="image/four.jpg" width="800px" height="500px">
+			<img src="image/five.jpg" width="800px" height="500px">
+			
+		</div>
+		
+		<div>
+			<button id="next">Next</button>
+		</div>
+	</section>
+		<script>
+			var img=document.querySelectorAll("img");
+			var next=document.getElementById("next");
+			var count=0;
+			next.addEventListener("click",function(){
+			count++;
+				img.forEach(function(val,ind){
+					if(ind<=count){
+						img[ind].style.position="absolute";
+						img[ind].style.left=`${-100*count+100*ind}%`;	
+					}
+					
+				});
+				if(count>img.length-1){
+				img.forEach(function(val,ind){
+				img[ind].removeAttribute("style");
+					count=0;
+				});
+				}
+				
+			});
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>
